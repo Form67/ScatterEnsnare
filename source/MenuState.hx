@@ -10,6 +10,10 @@ class MenuState extends FlxState
 	
 	override public function create():Void
 	{
+		if (FlxG.sound.music == null)
+		{
+			FlxG.sound.playMusic("AssetPaths.file_name", 1, true);
+		}
 		_playButton = new FlxButton(20, 20, "PLAY NOW", clickPlay);
 		_playButton.screenCenter();
 		add(_playButton);

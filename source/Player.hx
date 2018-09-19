@@ -26,7 +26,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 	 function Ensnare():Void
 	 {
 		 var newSnare = new Ensnare(this.x, this.y);
-		/snares.add(newSnare);
+		snares.add(newSnare);
 	 }
 	 
 	 //Code used from HaxeFlixel documentation
