@@ -5,7 +5,7 @@ import flixel.FlxGame;
 import flixel.FlxSprite;
 import flixel.graphics.FlxGraphic;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.system.FlxAsset;
+import flixel.util;
 
 class Ensnare extends FlxSprite
 {
@@ -19,11 +19,7 @@ class Ensnare extends FlxSprite
 		height = 50;
 		updateHitbox();
 	}
-	public function collide():Void{
-		
-	}
 	override public function update(elapsed:Float):Void{
-		collide();
 		super.update(elapsed);
 	}
 }

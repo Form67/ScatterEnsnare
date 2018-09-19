@@ -7,13 +7,13 @@ import flixel.group.FlxGroup.FlxTypedGroup;
  class Player extends FlxSprite
  {
 	 public var speed:Float = 200;
-	 
-     public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset)
+	 private var snares:FlxTypedGroup<Ensnare>;
+     public function new(?X:Float=0, ?Y:Float=0,_grpSnare:FlxTypedGroup<Ensnare>)
      {
          super(X, Y);
 		 makeGraphic(32, 32, 0xFFFFFFFF);
 		 drag.x = drag.y = 100;
-		 
+		 snares = _grpSnare;
 		 updateHitbox();
 		 
      }
@@ -25,7 +25,8 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 	 
 	 function Ensnare():Void
 	 {
-		 
+		 var newSnare = new Ensnare(this.x, this.y);
+		/snares.add(newSnare);
 	 }
 	 
 	 //Code used from HaxeFlixel documentation
