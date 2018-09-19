@@ -64,13 +64,13 @@
 		{
 			_xspeed += speed;
 		}
-		
-		if (FlxG.keys.anyJustPressed([J])
+
+		if (FlxG.keys.anyJustPressed([J]))
 		{
 			Scatter();
 		}
 		
-		if (FlxG.keys.anyJustPressed([K])
+		if (FlxG.keys.anyJustPressed([K]))
 		{
 			Ensnare();
 		}
