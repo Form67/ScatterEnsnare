@@ -39,9 +39,13 @@ import haxe.macro.Expr;
 		var config = {
 			
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			build: "48",
 =======
 			build: "15",
+>>>>>>> Stashed changes
+=======
+			build: "16",
 >>>>>>> Stashed changes
 			company: "HaxeFlixel",
 			file: "GameDevProj1",
@@ -115,9 +119,13 @@ import haxe.macro.Expr;
 		ManifestResources.init (config);
 		
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		app.meta["build"] = "48";
 =======
 		app.meta["build"] = "15";
+>>>>>>> Stashed changes
+=======
+		app.meta["build"] = "16";
 >>>>>>> Stashed changes
 		app.meta["company"] = "HaxeFlixel";
 		app.meta["file"] = "GameDevProj1";
