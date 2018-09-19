@@ -12,7 +12,7 @@ class MenuState extends FlxState
 	{
 		if (FlxG.sound.music == null)
 		{
-			FlxG.sound.playMusic("AssetPaths.file_name", 1, true);
+			FlxG.sound.playMusic(AssetPaths.Farming_Jaunt_Orchestra__wav, 1, true);
 		}
 		_playButton = new FlxButton(20, 20, "PLAY NOW", clickPlay);
 		_playButton.screenCenter();

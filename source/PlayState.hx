@@ -16,6 +16,7 @@ class PlayState extends FlxState
 	
 	override public function create():Void
 	{
+		FlxG.sound.playMusic(AssetPaths.Farming_Jaunt_8_Bit__WAV, 1, true);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
 		_player = new Player(20, 20,_grpSnare);
