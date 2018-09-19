@@ -38,7 +38,11 @@ import haxe.macro.Expr;
 		
 		var config = {
 			
+<<<<<<< Updated upstream
 			build: "48",
+=======
+			build: "15",
+>>>>>>> Stashed changes
 			company: "HaxeFlixel",
 			file: "GameDevProj1",
 			fps: 60,
@@ -110,7 +114,11 @@ import haxe.macro.Expr;
 		#if (lime >= "7.0.0")
 		ManifestResources.init (config);
 		
+<<<<<<< Updated upstream
 		app.meta["build"] = "48";
+=======
+		app.meta["build"] = "15";
+>>>>>>> Stashed changes
 		app.meta["company"] = "HaxeFlixel";
 		app.meta["file"] = "GameDevProj1";
 		app.meta["name"] = "GameDevProj1";
