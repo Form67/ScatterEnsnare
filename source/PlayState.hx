@@ -11,12 +11,16 @@ class PlayState extends FlxState
 	public var _grpSnare:FlxTypedGroup<Ensnare>;
 	var _grpMonster:FlxTypedGroup<Enemy>;
 	
-
+	var _HUD:HUD;
+	var _money:Int = 1000;
+	
 	override public function create():Void
 	{
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
 		_player = new Player(20, 20,_grpSnare);
+		_HUD = new HUD();
+		add(_HUD);
 		add(_player);
 		_score = 0;
 		super.create();
@@ -25,6 +29,13 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+		_money -= 1;
+		_HUD.UpdateHUD(_money);
+		
+		if (_money < 1)
+		{
+			FlxG.switchState(new GameOverState());
+		}
 		FlxG.overlap(_grpSnare, _grpMonster,monsterTouchTrap);
 	}
 	

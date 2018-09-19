@@ -32,6 +32,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 	 //Code used from HaxeFlixel documentation
 	 function movement():Void
 	 {
+		 
 		var _up:Bool = false;
 		var _down:Bool = false;
 		var _left:Bool = false;
@@ -45,6 +46,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 		_down = FlxG.keys.anyPressed([S]);
 		_left = FlxG.keys.anyPressed([A]);
 		_right = FlxG.keys.anyPressed([D]);
+		
 		
 		if (_up)
 		{
