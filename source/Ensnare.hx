@@ -10,16 +10,14 @@ import flixel.system.FlxAsset;
 class Ensnare extends FlxSprite
 {
 	var _snare:Ensnare;
-	var _grpSnare:FlxTypedGroup<Ensnare>;
 
 	public function new(?X:Float = 0, ?Y:Float = 0)
 	{
 		super(X, Y);
 		makeGraphic(16, 16, FlxColor.BLUE);
-		_grpSnare = new FlxTypedGroup<Ensnare>();
-		add(_grpSnare);
 		width = 50;
 		height = 50;
+		updateHitbox();
 	}
 	public function collide():Void{
 		

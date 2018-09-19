@@ -3,7 +3,7 @@
  import flixel.FlxSprite;
  import flixel.system.FlxAssets.FlxGraphicAsset;
  import flixel.FlxG;
-
+import flixel.group.FlxGroup.FlxTypedGroup;
  class Player extends FlxSprite
  {
 	 public var speed:Float = 200;
