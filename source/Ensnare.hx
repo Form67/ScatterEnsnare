@@ -5,7 +5,7 @@ import flixel.FlxGame;
 import flixel.FlxSprite;
 import flixel.graphics.FlxGraphic;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.util;
+import flixel.util.FlxColor;
 
 class Ensnare extends FlxSprite
 {
