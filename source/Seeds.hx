@@ -9,19 +9,41 @@ import flixel.util.FlxColor;
 import flixel.math.FlxRandom;
 
 class Seeds extends FlxSprite
-{
-	var _randomX:Float;
-	var _randomY:Float;
-
-	public function new(?X:Float = 0, ?Y:Float = 0)
+{	public var grpSeeds:FlxTypedGroup<Seeds>;
+	var speed:Float = 125;
+	var Direction:Float;
+	var lifeSpan:Float = 1;
+	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Float = 0,?S:FlxTypedGroup<Seeds>)
 	{
 		super(X, Y);
-		makeGraphic(20, 20, FlxColor.GREEN);
-		width = 20;
-		height = 20;
+		makeGraphic(5, 5, FlxColor.GREEN);
+		width = 5;
+		height = 5;
+		grpSeeds = S;
+		Direction = D;
 		updateHitbox();
 	}
 	override public function update(elapsed:Float):Void{
 		super.update(elapsed);
+		lifeSpan -= FlxG.elapsed;
+		if (Direction == 0){
+			velocity.x = -speed;
+		}
+		else if (Direction == 2){
+			velocity.y = -speed;
+		}
+		else if( Direction ==1 ){
+			velocity.x = speed;
+		}
+		if (lifeSpan<=0){
+			destroy();
+		}
+	}
+
+	override public function destroy():Void{
+		//spawnMonster
+		grpSeeds.remove(this);
+		super.destroy();
+		
 	}
 }
