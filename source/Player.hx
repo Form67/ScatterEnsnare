@@ -7,25 +7,38 @@ import flixel.group.FlxGroup.FlxTypedGroup;
  class Player extends FlxSprite
  {
 	 public var speed:Float = 200;
+	 public var currentRandomSeeds:Int;
 	 private var snares:FlxTypedGroup<Ensnare>;
-     public function new(?X:Float=0, ?Y:Float=0,_grpSnare:FlxTypedGroup<Ensnare>)
+	 private var seeds:FlxTypedGroup<Seeds>;
+     public function new(?X:Float=0, ?Y:Float=0,_grpSnare:FlxTypedGroup<Ensnare>,grpSeeds:FlxTypedGroup<Seeds>)
      {
          super(X, Y);
 		 makeGraphic(32, 32, 0xFFFFFFFF);
 		 drag.x = drag.y = 100;
 		 snares = _grpSnare;
+		 seeds = grpSeeds;
 		 updateHitbox();
 		 
      }
 	 
 	 function Scatter():Void
 	 {
-	
+		currentRandomSeeds = Std.int(Math.random() * 3 +1);
+		var Seed = new Seeds(this.x+15, this.y+15, 0,seeds);
+		seeds.add(Seed);
+		if(currentRandomSeeds >1){
+			var Seed2 = new Seeds(this.x+15, this.y+15, 1,seeds);
+			seeds.add(Seed2);
+		}
+		if (currentRandomSeeds >2){
+			var Seed3 = new Seeds(this.x+15, this.y+15, 2,seeds);
+			seeds.add(Seed3);
+		}
 	 }
 	 
 	 function Ensnare():Void
 	 {
-		 var newSnare = new Ensnare(this.x, this.y);
+		 var newSnare = new Ensnare(this.x+13, this.y+45);
 		snares.add(newSnare);
 	 }
 	 
@@ -88,4 +101,5 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 		 movement();
 		 super.update(elapsed);
 	 }
+
  }

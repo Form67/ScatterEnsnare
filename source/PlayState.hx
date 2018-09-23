@@ -9,6 +9,7 @@ class PlayState extends FlxState
 	var _player:Player;
 	var _score:Int;
 	public var _grpSnare:FlxTypedGroup<Ensnare>;
+	public var grpSeeds:FlxTypedGroup<Seeds>;
 	var _grpMonster:FlxTypedGroup<Enemy>;
 	
 	var _HUD:HUD;
@@ -19,7 +20,9 @@ class PlayState extends FlxState
 		FlxG.sound.playMusic(AssetPaths.Farming_Jaunt_8_Bit__WAV, 1, true);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
-		_player = new Player(20, 20,_grpSnare);
+		grpSeeds = new FlxTypedGroup<Seeds>();
+		add(grpSeeds);
+		_player = new Player(20, 20,_grpSnare,grpSeeds);
 		_HUD = new HUD();
 		add(_HUD);
 		add(_player);
