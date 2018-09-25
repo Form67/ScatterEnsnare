@@ -28,6 +28,9 @@
 </data>
  </layer>
  <layer name="Farmable" width="25" height="19">
+  <properties>
+   <property name="tileset" value="Farmable"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
