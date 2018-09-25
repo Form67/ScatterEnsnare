@@ -34,3 +34,10 @@ export/neko/haxe/release\.hxml
 export/neko/obj/ApplicationMain\.exe
 
 export/neko/obj/ApplicationMain\.n
+
+
+export/neko/bin/
+
+export/neko/haxe/
+
+export/neko/obj/
