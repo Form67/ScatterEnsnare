@@ -32,7 +32,7 @@ class PlayState extends FlxState
 		add(level.backgroundLayer);
 		
 		add (level.foregroundTiles);
-		FlxG.sound.playMusic(AssetPaths.Farming_Jaunt_8_Bit__WAV, 1, true);
+		FlxG.sound.playMusic(AssetPaths.FarmingJaunt8Bit__wav, 1, true);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
 		grpSeeds = new FlxTypedGroup<Seeds>();
