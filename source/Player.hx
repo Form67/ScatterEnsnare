@@ -20,6 +20,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 		 animation.add("scatter", [4, 4, 4,0], 5, false);
 		 animation.add("ensnare", [5,5,5,0], 5, false);
 		 drag.x = drag.y = 100;
+		  scale.set(.5, .5);
 		 snares = _grpSnare;
 		 seeds = grpSeeds;
 		 updateHitbox();
@@ -30,14 +31,14 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 	 {
 		animation.play("scatter");
 		currentRandomSeeds = Std.int(Math.random() * 3 +1);
-		var Seed = new Seeds(this.x+15, this.y+15, 0,seeds);
+		var Seed = new Seeds(this.x+this.width/2 -8, this.y+10, 0,seeds);
 		seeds.add(Seed);
 		if(currentRandomSeeds >1){
-			var Seed2 = new Seeds(this.x+15, this.y+15, 1,seeds);
+			var Seed2 = new Seeds(this.x+this.width/2-8, this.y+10, 1,seeds);
 			seeds.add(Seed2);
 		}
 		if (currentRandomSeeds >2){
-			var Seed3 = new Seeds(this.x+15, this.y+15, 2,seeds);
+			var Seed3 = new Seeds(this.x+this.width/2-8, this.y+10, 2,seeds);
 			seeds.add(Seed3);
 		}
 	 }
@@ -45,7 +46,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 	 function Ensnare():Void
 	 {
 		animation.play("ensnare");
-		 var newSnare = new Ensnare(this.x+13, this.y+45);
+		 var newSnare = new Ensnare(this.x+40, this.y+this.height-15);
 		snares.add(newSnare);
 	 }
 	 

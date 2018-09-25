@@ -21,7 +21,7 @@ class PlayState extends FlxState
 	var _grpMonster:FlxTypedGroup<Enemy>;
 	
 	var _HUD:HUD;
-	var _money:Int = 1000;
+	var _money:Int = 50000;
 	
 	override public function create():Void
 	{
