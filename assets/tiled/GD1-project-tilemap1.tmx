@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="75" height="61" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
- <tileset firstgid="1" source="../../../Haxefliel/GD1-proj1-tileset.tsx"/>
+ <tileset firstgid="1" source="GD1-proj1-tileset.tsx"/>
  <layer name="Ground" width="75" height="61">
   <data encoding="csv">
 452,524,488,448,563,484,488,560,524,559,597,448,489,412,448,599,523,524,415,488,597,413,599,484,524,598,563,447,524,558,486,448,484,450,561,597,415,414,596,525,450,597,598,488,411,522,488,525,596,563,526,489,415,595,559,451,521,525,559,560,413,559,486,449,560,596,599,411,596,561,526,561,559,485,415,

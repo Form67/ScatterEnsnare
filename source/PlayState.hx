@@ -1,11 +1,19 @@
 package;
 
 import flixel.FlxState;
+import flixel.group.FlxGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.FlxG;
+import flixel.FlxObject;
+import flixel.FlxSprite;
+import flixel.FlxState;
+import flixel.group.FlxGroup;
+import flixel.text.FlxText;
+
 
 class PlayState extends FlxState
 {
+	public var level:Tilemap;
 	var _player:Player;
 	var _score:Int;
 	public var _grpSnare:FlxTypedGroup<Ensnare>;
@@ -17,6 +25,11 @@ class PlayState extends FlxState
 	
 	override public function create():Void
 	{
+		FlxG.mouse.visible = false;
+		level = new Tilemap("assets/tiled/GD1-project-tilemap1.tmx", this);
+		add(level.backgroundLayer);
+		
+		add (level.foregroundTiles);
 		FlxG.sound.playMusic(AssetPaths.Farming_Jaunt_8_Bit__WAV, 1, true);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
