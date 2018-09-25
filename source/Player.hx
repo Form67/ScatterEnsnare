@@ -3,9 +3,14 @@
  import flixel.FlxSprite;
  import flixel.system.FlxAssets.FlxGraphicAsset;
  import flixel.FlxG;
-import flixel.group.FlxGroup.FlxTypedGroup;
+ import flixel.group.FlxGroup.FlxTypedGroup;
+ import Reflect;
+ 
  class Player extends FlxSprite
  {
+	 public var trapplaced:Bool;
+	 public var scattered:Bool;
+	 
 	 public var speed:Float = 200;
 	 public var currentRandomSeeds:Int;
 	 public var snares:FlxTypedGroup<Ensnare>;
@@ -26,11 +31,13 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 		 seeds = grpSeeds;
 		 mons = grpMons;
 		 updateHitbox();
-		 
+		 trapplaced = false;
+		 scattered = false;
      }
 	 
 	 function Scatter():Void
 	 {
+		scattered = true;
 		animation.play("scatter");
 		currentRandomSeeds = Std.int(Math.random() * 3 +1);
 		var Seed = new Seeds(this.x+this.width/2 -8, this.y+10, 0,seeds,mons);
@@ -47,6 +54,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 	 
 	 function Ensnare():Void
 	 {
+		 trapplaced = true;
 		animation.play("ensnare");
 		 var newSnare = new Ensnare(this.x+40, this.y+this.height-15);
 		snares.add(newSnare);

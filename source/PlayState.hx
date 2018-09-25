@@ -22,6 +22,8 @@ class PlayState extends FlxState
 	
 	var _HUD:HUD;
 	var _money:Int = 50000;
+	var _trapmoney:Int = 50;
+	var _seedmoney:Int = 50;
 	
 	override public function create():Void
 	{
@@ -30,9 +32,9 @@ class PlayState extends FlxState
 		add(level.backgroundLayer);
 		
 		add (level.foregroundTiles);
-		FlxG.sound.playMusic(AssetPaths.Farming_Jaunt_8_Bit__WAV, 1, true);
-		_grpMonster = new FlxTypedGroup<Enemy>();
 		add(_grpMonster);
+		_grpMonster = new FlxTypedGroup<Enemy>();
+		FlxG.sound.playMusic(AssetPaths.FarmingJaunt8Bit__wav, 1, true);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
 		grpSeeds = new FlxTypedGroup<Seeds>();
@@ -55,7 +57,19 @@ class PlayState extends FlxState
 		{
 			FlxG.switchState(new GameOverState());
 		}
-		FlxG.overlap(_grpSnare, _grpMonster,monsterTouchTrap);
+		FlxG.overlap(_grpSnare, _grpMonster, monsterTouchTrap);
+		
+		if (_player.scattered)
+		{
+			SubMoney(_seedmoney);
+			_player.scattered = false;
+		}
+		
+		if (_player.trapplaced)
+		{
+			SubMoney(_trapmoney);
+			_player.trapplaced = false;
+		}
 	}
 	
 	function monsterTouchTrap(E:Ensnare,M:Enemy):Void{
@@ -70,5 +84,10 @@ class PlayState extends FlxState
 	function placeEntities(entityName:String):Void{
 		
 		
+	}
+	
+	function SubMoney(amount:Int):Void
+	{
+		_money -= amount;
 	}
 }
