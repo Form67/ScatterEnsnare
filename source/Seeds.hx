@@ -15,6 +15,7 @@ class Seeds extends FlxSprite
 	var Direction:Float;
 	var monsterDelay:Float = .5;
 	var lifeSpan:Float = .6;
+	var level:Int;
 	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Float = 0,?S:FlxTypedGroup<Seeds>,?M:FlxTypedGroup<Enemy>)
 	{
 		super(X, Y);

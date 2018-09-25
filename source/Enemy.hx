@@ -7,10 +7,10 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 class Enemy extends FlxSprite
 {
     public var speed:Float = 200;
-    var Direction:Float;
+    var Direction:Int;
     var MonsterType:Float;
     public var grpMonster:FlxTypedGroup<Enemy>;
-    public function new(?X:Float = 0, ?Y:Float = 0, ?D:Float = 0, ?S:FlxTypedGroup<Enemy>, ?M:Float = 0)
+    public function new(?X:Float = 0, ?Y:Float = 0, ?D:Int = 0, ?S:FlxTypedGroup<Enemy>, ?M:Float = 0)
     {
         super(X, Y);
         Direction = D;
