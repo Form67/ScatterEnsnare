@@ -14,9 +14,7 @@ class Ensnare extends FlxSprite
 	public function new(?X:Float = 0, ?Y:Float = 0)
 	{
 		super(X, Y);
-		makeGraphic(16, 16, FlxColor.BLUE);
-		width = 50;
-		height = 50;
+		loadGraphic("assets/images/Trap1.png", true);
 		updateHitbox();
 	}
 	override public function update(elapsed:Float):Void{

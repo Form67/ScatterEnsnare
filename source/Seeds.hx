@@ -12,7 +12,7 @@ class Seeds extends FlxSprite
 {	public var grpSeeds:FlxTypedGroup<Seeds>;
 	var speed:Float = 125;
 	var Direction:Float;
-	var lifeSpan:Float = 1;
+	var lifeSpan:Float = .6;
 	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Float = 0,?S:FlxTypedGroup<Seeds>)
 	{
 		super(X, Y);
