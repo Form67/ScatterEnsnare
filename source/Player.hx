@@ -10,10 +10,15 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 	 public var currentRandomSeeds:Int;
 	 private var snares:FlxTypedGroup<Ensnare>;
 	 private var seeds:FlxTypedGroup<Seeds>;
-     public function new(?X:Float=0, ?Y:Float=0,_grpSnare:FlxTypedGroup<Ensnare>,grpSeeds:FlxTypedGroup<Seeds>)
+     public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset, _grpSnare:FlxTypedGroup<Ensnare>,grpSeeds:FlxTypedGroup<Seeds>)
      {
          super(X, Y);
-		 makeGraphic(32, 32, 0xFFFFFFFF);
+		 loadGraphic("assets/images/FarmerSprites.png", true);
+		 animation.add("standing", [0], 30, true);
+		 animation.add("left", [1, 2, 3, 2], 5, false, true);
+		 animation.add("right", [1, 2, 3, 2], 5, false);
+		 animation.add("scatter", [4, 4, 4,0], 5, false);
+		 animation.add("ensnare", [5,5,5,0], 5, false);
 		 drag.x = drag.y = 100;
 		 snares = _grpSnare;
 		 seeds = grpSeeds;
@@ -23,6 +28,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 	 
 	 function Scatter():Void
 	 {
+		animation.play("scatter");
 		currentRandomSeeds = Std.int(Math.random() * 3 +1);
 		var Seed = new Seeds(this.x+15, this.y+15, 0,seeds);
 		seeds.add(Seed);
@@ -38,6 +44,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 	 
 	 function Ensnare():Void
 	 {
+		animation.play("ensnare");
 		 var newSnare = new Ensnare(this.x+13, this.y+45);
 		snares.add(newSnare);
 	 }
@@ -73,11 +80,13 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 		
 		if (_left)
 		{
+			animation.play("left");
 			_xspeed -= speed;
 		}
 		
 		if (_right)
 		{
+			animation.play("right");
 			_xspeed += speed;
 		}
 
@@ -92,6 +101,11 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 		}
 		
 		velocity.set(_xspeed, _ypspeed);
+		
+		if (_xspeed == 0 && _ypspeed == 0)
+		{
+			//animation.play("standing");
+		}
 		
 	 }
 	 
