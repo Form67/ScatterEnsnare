@@ -5,6 +5,9 @@
  </properties>
  <tileset firstgid="1" source="GD1-proj1-tileset.tsx"/>
  <layer name="Ground" width="25" height="19">
+  <properties>
+   <property name="tileset" value="GD1-proj1-tileset"/>
+  </properties>
   <data encoding="csv">
 109,109,109,109,109,109,109,109,109,109,109,109,88,89,89,90,109,109,109,109,109,109,109,109,109,
 109,109,109,109,109,109,109,109,109,109,109,109,113,114,114,115,109,109,109,109,109,109,109,109,109,
@@ -28,6 +31,10 @@
 </data>
  </layer>
  <layer name="Farmable" width="25" height="19">
+  <properties>
+   <property name="Farmable" type="bool" value="true"/>
+   <property name="tileset" value="GD1-proj1-tileset"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -51,6 +58,9 @@
 </data>
  </layer>
  <layer name="Bush" width="25" height="19">
+  <properties>
+   <property name="tileset" value="GD1-proj1-tileset"/>
+  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,214,215,216,0,
