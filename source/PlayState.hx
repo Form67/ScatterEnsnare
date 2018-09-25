@@ -22,6 +22,9 @@ class PlayState extends FlxState
 	
 	var _HUD:HUD;
 	var _money:Int = 50000;
+	var _moneytick:Int = 0;
+	var _moneytickmax:Int = 10;
+	var _moneyovertime = 5;
 	var _trapmoney:Int = 50;
 	var _seedmoney:Int = 50;
 	
@@ -48,7 +51,15 @@ class PlayState extends FlxState
 	override public function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
-		_money -= 1;
+		if (_moneytick == _moneytickmax)
+		{
+			_money -= _moneyovertime;
+			_moneytick = 0;
+		}
+		else
+		{
+			_moneytick += 1;
+		}
 		_HUD.UpdateHUD(_money);
 		
 		if (_money < 1)
@@ -85,5 +96,45 @@ class PlayState extends FlxState
 	function SubMoney(amount:Int):Void
 	{
 		_money -= amount;
+	}
+	
+	function LevelTwo():Void
+	{
+		//level = nextlevel;
+		//_money = newmoney;
+		//seedmoney = newseedmoney;
+		//trapmoney = newtrapmoney;
+		//_moneytickmax = newmoneytickmax;
+		//_moneyovertime = newmoneyovertime;
+	}
+	
+	function LevelThree():Void
+	{
+		//level = nextlevel;
+		//_money = newmoney;
+		//seedmoney = newseedmoney;
+		//trapmoney = newtrapmoney;
+		//_moneytickmax = newmoneytickmax;
+		//_moneyovertime = newmoneyovertime;
+	}
+	
+	function LevelFour():Void
+	{
+		//level = nextlevel;
+		//_money = newmoney;
+		//seedmoney = newseedmoney;
+		//trapmoney = newtrapmoney;
+		//_moneytickmax = newmoneytickmax;
+		//_moneyovertime = newmoneyovertime;
+	}
+	
+	function LevelFive():Void
+	{
+		//level = nextlevel;
+		//_money = newmoney;
+		//seedmoney = newseedmoney;
+		//trapmoney = newtrapmoney;
+		//_moneytickmax = newmoneytickmax;
+		//_moneyovertime = newmoneyovertime;
 	}
 }
