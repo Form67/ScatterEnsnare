@@ -35,8 +35,8 @@ class PlayState extends FlxState
 		add(level.backgroundLayer);
 		
 		add (level.foregroundTiles);
-		add(_grpMonster);
 		_grpMonster = new FlxTypedGroup<Enemy>();
+		add(_grpMonster);
 		FlxG.sound.playMusic(AssetPaths.FarmingJaunt8Bit__wav, 1, true);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
