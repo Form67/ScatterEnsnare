@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="25" height="19" tilewidth="32" tileheight="32" infinite="0" nextobjectid="1">
  <properties>
+
   <property name="Farmable" type="bool" value="true"/>
  </properties>
- <tileset firstgid="1" source="../../../Haxefliel/GD1-proj1-tileset.tsx"/>
+ <tileset firstgid="1" source="GD1-proj1-tileset.tsx"/>
  <layer name="Ground" width="25" height="19">
   <data encoding="csv">
 109,109,109,109,109,109,109,109,109,109,109,109,88,89,89,90,109,109,109,109,109,109,109,109,109,
@@ -28,9 +29,6 @@
 </data>
  </layer>
  <layer name="Farmable" width="25" height="19">
-  <properties>
-   <property name="Farmable" type="bool" value="true"/>
-  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
