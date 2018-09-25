@@ -18,7 +18,7 @@ class PlayState extends FlxState
 	var _score:Int;
 	public var _grpSnare:FlxTypedGroup<Ensnare>;
 	public var grpSeeds:FlxTypedGroup<Seeds>;
-	var _grpMonster:FlxTypedGroup<Enemy>;
+	public var _grpMonster:FlxTypedGroup<Enemy>;
 	
 	var _HUD:HUD;
 	var _money:Int = 50000;
@@ -35,12 +35,14 @@ class PlayState extends FlxState
 		add(level.backgroundLayer);
 		
 		add (level.foregroundTiles);
+		add(_grpMonster);
+		_grpMonster = new FlxTypedGroup<Enemy>();
 		FlxG.sound.playMusic(AssetPaths.FarmingJaunt8Bit__wav, 1, true);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
 		grpSeeds = new FlxTypedGroup<Seeds>();
 		add(grpSeeds);
-		_player = new Player(20, 20,_grpSnare,grpSeeds);
+		_player = new Player(20, 20,_grpSnare,grpSeeds,_grpMonster);
 		_HUD = new HUD();
 		add(_HUD);
 		add(_player);
@@ -82,8 +84,10 @@ class PlayState extends FlxState
 	}
 	
 	function monsterTouchTrap(E:Ensnare,M:Enemy):Void{
-		if(E.alive&&E.exists&&M.alive&&M.exists){
-			//turn off monster movement then kill
+		if (E.alive && E.exists && M.alive && M.exists){
+			//addscore
+			E.destroy();
+			M.destroy();
 			
 		}
 		
