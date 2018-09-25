@@ -8,9 +8,10 @@ import flixel.group.FlxGroup.FlxTypedGroup;
  {
 	 public var speed:Float = 200;
 	 public var currentRandomSeeds:Int;
-	 private var snares:FlxTypedGroup<Ensnare>;
-	 private var seeds:FlxTypedGroup<Seeds>;
-     public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset, _grpSnare:FlxTypedGroup<Ensnare>,grpSeeds:FlxTypedGroup<Seeds>)
+	 public var snares:FlxTypedGroup<Ensnare>;
+	 public var seeds:FlxTypedGroup<Seeds>;
+	 public var mons:FlxTypedGroup<Enemy>;
+     public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset, _grpSnare:FlxTypedGroup<Ensnare>,grpSeeds:FlxTypedGroup<Seeds>,grpMons:FlxTypedGroup<Enemy>)
      {
          super(X, Y);
 		 loadGraphic("assets/images/FarmerSprites.png", true);
@@ -23,6 +24,7 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 		  scale.set(.5, .5);
 		 snares = _grpSnare;
 		 seeds = grpSeeds;
+		 mons = grpMons;
 		 updateHitbox();
 		 
      }
@@ -31,14 +33,14 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 	 {
 		animation.play("scatter");
 		currentRandomSeeds = Std.int(Math.random() * 3 +1);
-		var Seed = new Seeds(this.x+this.width/2 -8, this.y+10, 0,seeds);
+		var Seed = new Seeds(this.x+this.width/2 -8, this.y+10, 0,seeds,mons);
 		seeds.add(Seed);
 		if(currentRandomSeeds >1){
-			var Seed2 = new Seeds(this.x+this.width/2-8, this.y+10, 1,seeds);
+			var Seed2 = new Seeds(this.x+this.width/2-8, this.y+10, 1,seeds,mons);
 			seeds.add(Seed2);
 		}
 		if (currentRandomSeeds >2){
-			var Seed3 = new Seeds(this.x+this.width/2-8, this.y+10, 2,seeds);
+			var Seed3 = new Seeds(this.x+this.width/2-8, this.y+10, 2,seeds,mons);
 			seeds.add(Seed3);
 		}
 	 }

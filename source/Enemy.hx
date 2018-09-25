@@ -15,13 +15,13 @@ class Enemy extends FlxSprite
         super(X, Y);
         Direction = D;
         MonsterType = M;
-        if (M == 1) {
+        if (M == 0) {
             loadGraphic("assets/images/monster_1_fin.png", true);
         }
-        if (M == 2) {
+        if (M == 1) {
             loadGraphic("assets/images/monster_2_fin.png", true);
         }
-        if (M == 3 ) {
+        if (M == 2 ) {
             loadGraphic("assets/images/monster_3_fin.png", true);
         }
          
