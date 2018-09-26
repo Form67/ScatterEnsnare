@@ -12,10 +12,11 @@ class Seeds extends FlxSprite
 {	public var grpSeeds:FlxTypedGroup<Seeds>;
 	public var grpMons:FlxTypedGroup<Enemy>;
 	var speed:Float = 125;
-	var Direction:Float;
+	var Direction:Int;
 	var monsterDelay:Float = .5;
 	var lifeSpan:Float = .6;
-	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Float = 0,?S:FlxTypedGroup<Seeds>,?M:FlxTypedGroup<Enemy>)
+	var level:Int;
+	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Int = 0,?S:FlxTypedGroup<Seeds>,?M:FlxTypedGroup<Enemy>)
 	{
 		super(X, Y);
 		makeGraphic(5, 5, FlxColor.BLACK);
@@ -50,9 +51,10 @@ class Seeds extends FlxSprite
 		}
 	}
 	function SpawnMonster():Void{
-		var mon = new Enemy(this.x+30, this.y-30, 0,grpMons,0);
+		//if (FlxG.overlap()){
+		var mon = new Enemy(this.x-25, this.y-20, Direction,grpMons,0);
 		grpMons.add(mon);
-
+		//}
 	}
 	override public function destroy():Void{
 		super.destroy();

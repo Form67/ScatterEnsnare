@@ -21,7 +21,7 @@ class PlayState extends FlxState
 	public var _grpMonster:FlxTypedGroup<Enemy>;
 	
 	var _HUD:HUD;
-	var _money:Int = 50000;
+	var _money:Int = 1000;
 	var _moneytick:Int = 0;
 	var _moneytickmax:Int = 10;
 	var _moneyovertime = 5;
@@ -35,8 +35,8 @@ class PlayState extends FlxState
 		add(level.backgroundLayer);
 		
 		add (level.foregroundTiles);
-		add(_grpMonster);
 		_grpMonster = new FlxTypedGroup<Enemy>();
+		add(_grpMonster);
 		FlxG.sound.playMusic(AssetPaths.FarmingJaunt8Bit__wav, 1, true);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
@@ -85,10 +85,9 @@ class PlayState extends FlxState
 	
 	function monsterTouchTrap(E:Ensnare,M:Enemy):Void{
 		if (E.alive && E.exists && M.alive && M.exists){
-			//addscore
+			_money += 150;
 			E.destroy();
-			M.destroy();
-			
+			M.destroy();	
 		}
 		
 	}

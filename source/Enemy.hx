@@ -8,42 +8,38 @@ class Enemy extends FlxSprite
 {
     public var grpMonster:FlxTypedGroup<Enemy>;
     public var speed:Float;
-    var Direction:Float;
+    var Direction:Int;
     var MonsterType:Float;
     var LifeSpan:Float = 1.5;
-    var Flag:Boolean = false;
-
+    var Flag:Bool = false;
+	var RandomDirection:Float;
+	var RandomSeed:Float;
     // M should be either 0, 1 or 2
-    public function new(?X:Float = 0, ?Y:Float = 0, ?D:Float = 0, ?S:FlxTypedGroup<Enemy>, ?M:Float = 0)
+    public function new(?X:Float = 0, ?Y:Float = 0, ?D:Int = 0, ?S:FlxTypedGroup<Enemy>, ?M:Float = 0)
     {
         super(X, Y);
         Direction = D;
         MonsterType = M;
+		scale.set(.65, .65);
         if (M == 0) {
             loadGraphic("assets/images/monster_1_fin.png", true);
             speed = 125;
         }
-        if (M == 1) {
+        else if (M == 1) {
             loadGraphic("assets/images/monster_2_fin.png", true);
             speed = 200;
         }
-        if (M == 2 ) {
+       else if (M == 2 ) {
             loadGraphic("assets/images/monster_3_fin.png", true);
             speed = 75;
         }
+		updateHitbox();
          
     }
-    // Code used from HaxeFlixel documentation
-    function movement():Void
-    {
-        var _ypspeed:Float = 0;
-        var _xspeed:Float = 0;      
 
-        
-    }
-     
     override public function update(elapsed:Float):Void
     {
+		super.update(elapsed);
         if (MonsterType == 0) {
             if (Direction == 0) { // Left
                 velocity.x = -speed;
