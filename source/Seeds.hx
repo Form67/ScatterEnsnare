@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 import flixel.graphics.FlxGraphic;
 import flixel.group.FlxGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.system.FlxSound;
 import flixel.util.FlxColor;
 import flixel.math.FlxRandom;
 
@@ -20,7 +21,10 @@ class Seeds extends FlxSprite
 	var monsterDelay:Float = .5;
 	var lifeSpan:Float = .6;
 	var level:Int;
-	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Int = 0,?S:FlxTypedGroup<Seeds>,?M:FlxTypedGroup<Enemy>,?F:FlxGroup)
+	
+	var _hitSound:FlxSound;
+	
+	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Int = 0,?S:FlxTypedGroup<Seeds>,?M:FlxTypedGroup<Enemy>)
 	{
 		super(X, Y);
 		makeGraphic(5, 5, FlxColor.BLACK);
@@ -31,6 +35,8 @@ class Seeds extends FlxSprite
 		foreGrnd = F;
 		Direction = D;
 		updateHitbox();
+		
+		_hitSound = FlxG.sound.load(AssetPaths.seedhit__wav);
 	}
 	override public function update(elapsed:Float):Void{
 		super.update(elapsed);
@@ -47,6 +53,7 @@ class Seeds extends FlxSprite
 		if (lifeSpan <= 0){
 			velocity.x = 0;
 			velocity.y = 0;
+			_hitSound.play(false, 0);
 			monsterDelay -= elapsed;
 		}
 		if (monsterDelay <= 0){

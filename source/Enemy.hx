@@ -97,7 +97,6 @@ class Enemy extends FlxSprite
         }
 
         if (MonsterType == 2) {
-            super.update(elapsed);
             LifeSpan -= FlxG.elapsed;
             if (Flag == false && LifeSpan <= 0) {
                 speed = 325;
