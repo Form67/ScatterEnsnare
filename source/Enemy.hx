@@ -14,10 +14,12 @@ class Enemy extends FlxSprite
     var Flag:Bool = false;
 	var RandomDirection:Float;
 	var RandomSeed:Float;
+	var eGrp:FlxTypedGroup<Enemy>;
     // M should be either 0, 1 or 2
     public function new(?X:Float = 0, ?Y:Float = 0, ?D:Int = 0, ?S:FlxTypedGroup<Enemy>, ?M:Float = 0)
     {
         super(X, Y);
+		eGrp = S;
         Direction = D;
         MonsterType = M;
 		scale.set(.65, .65);
@@ -40,9 +42,6 @@ class Enemy extends FlxSprite
     override public function update(elapsed:Float):Void
     {
 		super.update(elapsed);
-        if (this.x <= 0 || this.x >= 800 || this.y <= 0 || this.y >= 600) {
-            destroy();
-        }
         
         if (MonsterType == 0) {
             if (Direction == 0) { // Left
@@ -132,8 +131,12 @@ class Enemy extends FlxSprite
                 velocity.y = speed;
             }
         }
+		if (this.x <= 0 || this.x >= 800 || this.y <= 0 || this.y >= 600) {
+            destroy();
+        }
     }
     override public function destroy():Void {
+		eGrp.remove(this);
         super.destroy();
     }
  }

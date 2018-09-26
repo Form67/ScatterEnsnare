@@ -23,6 +23,7 @@
 	 var _footstep1:FlxSound;
 	 var _footstep2:FlxSound;
 	 
+	 
 	 public var fore:FlxGroup;
 	var trapCool:Float =0;
 	 var seedCool:Float =0;

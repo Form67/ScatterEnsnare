@@ -24,7 +24,7 @@ class Seeds extends FlxSprite
 	
 	var _hitSound:FlxSound;
 	
-	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Int = 0,?S:FlxTypedGroup<Seeds>,?M:FlxTypedGroup<Enemy>)
+	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Int = 0,?S:FlxTypedGroup<Seeds>,?M:FlxTypedGroup<Enemy>,?F:FlxGroup)
 	{
 		super(X, Y);
 		makeGraphic(5, 5, FlxColor.BLACK);
