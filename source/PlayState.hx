@@ -39,12 +39,11 @@ class PlayState extends FlxState
 		level = new Tilemap("assets/tiled/GD1-project-tilemap1.tmx", this);
 		add(level.backgroundLayer);
 		add (level.foregroundTiles);
-		
+		_trapSound = FlxG.sound.load(AssetPaths.trapclose__wav);
 		
 		_grpMonster = new FlxTypedGroup<Enemy>();
 		add(_grpMonster);
 		FlxG.sound.playMusic(AssetPaths.FarmingJaunt8Bit__wav, 1, true);
-		_trapSound = FlxG.sound.load(AssetPaths.trapclose__wav);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
 		grpSeeds = new FlxTypedGroup<Seeds>();
@@ -107,7 +106,7 @@ class PlayState extends FlxState
 			_money += 150;
 			E.destroy();
 			M.destroy();
-			//_trapSound.play(true, 300);
+			_trapSound.play(true, 300);
 			
 		}
 		

@@ -16,7 +16,7 @@ class LevelFive extends LevelFour
 		level = new Tilemap("assets/tiled/GD1-project-tilemap5.tmx", this);
 		add(level.backgroundLayer);
 		add (level.foregroundTiles);
-		
+		_trapSound = FlxG.sound.load(AssetPaths.trapclose__wav);
 		
 		_grpMonster = new FlxTypedGroup<Enemy>();
 		add(_grpMonster);

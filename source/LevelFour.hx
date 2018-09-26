@@ -24,7 +24,7 @@ class LevelFour extends LevelThree
 		add(_grpSnare);
 		grpSeeds = new FlxTypedGroup<Seeds>();
 		add(grpSeeds);
-		
+		_trapSound = FlxG.sound.load(AssetPaths.trapclose__wav);
 		
 		
 		
