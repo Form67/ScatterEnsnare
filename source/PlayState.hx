@@ -15,7 +15,6 @@ class PlayState extends FlxState
 {
 	public var level:Tilemap;
 	var _player:Player;
-	var _score:Int;
 	public var _grpSnare:FlxTypedGroup<Ensnare>;
 	public var grpSeeds:FlxTypedGroup<Seeds>;
 	public var _grpMonster:FlxTypedGroup<Enemy>;
@@ -35,20 +34,26 @@ class PlayState extends FlxState
 		FlxG.mouse.visible = false;
 		level = new Tilemap("assets/tiled/GD1-project-tilemap1.tmx", this);
 		add(level.backgroundLayer);
-		
 		add (level.foregroundTiles);
+		
+		
 		_grpMonster = new FlxTypedGroup<Enemy>();
 		add(_grpMonster);
-		FlxG.sound.playMusic(AssetPaths.FarmingJaunt8Bit__wav, 1, true);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
 		grpSeeds = new FlxTypedGroup<Seeds>();
 		add(grpSeeds);
+		
+		
+		FlxG.sound.playMusic(AssetPaths.FarmingJaunt8Bit__wav, 1, true);
+		
+		
+		
 		_player = new Player(20, 20,_grpSnare,grpSeeds,_grpMonster);
 		_HUD = new HUD();
 		add(_HUD);
 		add(_player);
-		_score = 0;
+	
 		super.create();
 	}
 
@@ -78,36 +83,7 @@ class PlayState extends FlxState
 		
 		if (_money >= _moneygoal)
 		{
-			if (_currlevel == 1)
-			{
-				LevelTwo();
-				_currlevel++;
-			}
-			
-			else if (_currlevel == 2)
-			{
-				LevelThree();
-				_currlevel++;
-			}
-			
-			else if (_currlevel == 3)
-			{
-				LevelFour();
-				_currlevel++;
-			}
-			
-			else if (_currlevel == 4)
-			{
-				LevelFive();
-				_currlevel++;
-			}
-			
-			else if (_currlevel == 5)
-			{
-				//WIN
-			}
-			
-			
+			FlxG.switchState(new LevelTwo());
 		}
 		
 		FlxG.overlap(_grpSnare, _grpMonster, monsterTouchTrap);
@@ -141,65 +117,5 @@ class PlayState extends FlxState
 	function SubMoney(amount:Int):Void
 	{
 		_money -= amount;
-	}
-	
-	function LevelTwo():Void
-	{
-		level = new Tilemap("assets/tiled/GD1-project-tilemap2.tmx", this);
-			add(level.backgroundLayer);
-		
-		add (level.foregroundTiles);
-		add(_HUD);
-		add(_player);
-		_money = 1000;
-		_seedmoney = 75;
-		_trapmoney = 75;
-		//_moneytickmax = newmoneytickmax;
-		//_moneyovertime = newmoneyovertime;
-	}
-	
-	function LevelThree():Void
-	{
-		level = new Tilemap("assets/tiled/GD1-project-tilemap3.tmx", this);
-			add(level.backgroundLayer);
-		
-		add (level.foregroundTiles);
-		_money = 1000;
-		add(_HUD);
-		add(_player);
-		//seedmoney = newseedmoney;
-		//trapmoney = newtrapmoney;
-		_moneytickmax = 5;
-		//_moneyovertime = newmoneyovertime;
-	}
-	
-	function LevelFour():Void
-	{
-		level = new Tilemap("assets/tiled/GD1-project-tilemap4.tmx", this);
-			add(level.backgroundLayer);
-		
-		add (level.foregroundTiles);
-		add(_HUD);
-		add(_player);
-		_money = 1000;
-		//seedmoney = newseedmoney;
-		//trapmoney = newtrapmoney;
-		//_moneytickmax = newmoneytickmax;
-		_moneyovertime = 10;
-	}
-	
-	function LevelFive():Void
-	{
-		level = new Tilemap("assets/tiled/GD1-project-tilemap5.tmx", this);
-			add(level.backgroundLayer);
-		
-		add (level.foregroundTiles);
-		add(_HUD);
-		add(_player);
-		_money = 1000;
-		//seedmoney = newseedmoney;
-		//trapmoney = newtrapmoney;
-		//_moneytickmax = newmoneytickmax;
-		//_moneyovertime = newmoneyovertime;
 	}
 }
