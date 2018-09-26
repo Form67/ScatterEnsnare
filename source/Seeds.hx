@@ -51,8 +51,10 @@ class Seeds extends FlxSprite
 		}
 	}
 	function SpawnMonster():Void{
+		//if (FlxG.overlap()){
 		var mon = new Enemy(this.x-25, this.y-20, Direction,grpMons,0);
 		grpMons.add(mon);
+		//}
 	}
 	override public function destroy():Void{
 		super.destroy();
