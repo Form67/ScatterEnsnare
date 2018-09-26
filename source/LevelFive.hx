@@ -56,7 +56,7 @@ class LevelFive extends LevelFour
 		
 		if (_money < 1)
 		{
-			FlxG.switchState(new GameOverState());
+			FlxG.switchState(new GameOverState(5));
 		}
 		
 		if (FlxG.keys.anyPressed([P]))

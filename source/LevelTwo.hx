@@ -54,7 +54,7 @@ class LevelTwo extends PlayState
 		
 		if (_money < 1)
 		{
-			FlxG.switchState(new GameOverState());
+			FlxG.switchState(new GameOverState(2));
 		}
 		
 		if (FlxG.keys.anyPressed([P]))

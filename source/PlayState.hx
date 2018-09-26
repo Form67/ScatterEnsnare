@@ -73,7 +73,7 @@ class PlayState extends FlxState
 		
 		if (_money < 1)
 		{
-			FlxG.switchState(new GameOverState());
+			FlxG.switchState(new GameOverState(1));
 		}
 		
 		if (FlxG.keys.anyPressed([P]))
