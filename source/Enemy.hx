@@ -40,6 +40,10 @@ class Enemy extends FlxSprite
     override public function update(elapsed:Float):Void
     {
 		super.update(elapsed);
+        if (this.x <= 0 || this.x >= 800 || this.y <= 0 || this.y >= 600) {
+            destroy();
+        }
+        
         if (MonsterType == 0) {
             if (Direction == 0) { // Left
                 velocity.x = -speed;
@@ -69,7 +73,7 @@ class Enemy extends FlxSprite
                 velocity.y = speed;
             }
 
-            RandomSeed = Std.int(Math.random() * 200);
+            RandomSeed = Std.int(Math.random() * 50);
             if (RandomSeed < 1) {
                 speed += 25;
                 RandomDirection = Std.int(Math.random() * 2 + 1);
@@ -129,5 +133,8 @@ class Enemy extends FlxSprite
                 velocity.y = speed;
             }
         }
+    }
+    override public function destroy():Void {
+        super.destroy();
     }
  }
