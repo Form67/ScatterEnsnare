@@ -18,7 +18,7 @@ class MenuState extends FlxState
 	{
 		if (FlxG.sound.music == null)
 		{
-			FlxG.sound.playMusic(AssetPaths.FarmingJauntOrchestra__wav, 1, true);
+			FlxG.sound.playMusic(AssetPaths.FarmingJauntOrchestra1__wav, 1, true);
 		}
 		
 		_menuscreen = new FlxSprite(0, 0, AssetPaths.Menu_Screen__png);
