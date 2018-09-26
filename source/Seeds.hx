@@ -55,18 +55,43 @@ class Seeds extends FlxSprite
 			destroy();
 		}
 	}
-	function SpawnMonster():Void{
-		if (this.overlaps(foreGrnd)){
-			if(Direction==0)
-				mon = new Enemy(this.x - 25, this.y - 20, Direction, grpMons, 0);
-			else if(Direction == 1){
-				mon = new Enemy(this.x - 25, this.y - 20, Direction, grpMons, 1);
-				
+	function SpawnMonster():Void {
+		var n:Int;
+		if (this.overlaps(foreGrnd)) {
+			RandomMonster = Std.int(Math.random() * 3 + 1);
+			if (RandomMonster <= 1) {
+				n = 0;
 			}
-			else if (Direction == 2){
-				mon = new Enemy(this.x - 25, this.y - 20, Direction, grpMons, 2);
+			else if (RandomMonster <= 2) {
+				n = 1;
 			}
-			grpMons.add(mon);
+			else if (RandomMonster <= 3) {
+				n = 2;
+			}
+			RandomDirection = Std.int(Math.random() * 3 + 1);
+			if (Direction == 0 || Direction == 1) {
+				if (RandomDirection <= 1) {
+					Monster = new Enemy(this.x - 25, this.y - 20, Direction, grpMons, n);
+				}
+				else if (RandomDirection <= 2) {
+					Monster = new Enemy(this.x - 25, this.y - 20, 2, grpMons, n);
+				}
+				else if (RandomDirection <= 3) {
+					Monster = new Enemy(this.x - 25, this.y - 20, 3, grpMons, n);
+				}
+			}
+			else if (Direction == 2 || Direction == 3) {
+				if (RandomDirection <= 1) {
+					Monster = new Enemy(this.x - 25, this.y - 20, 0, grpMons, n);
+				}
+				else if (RandomDirection <= 2) {
+					Monster = new Enemy(this.x - 25, this.y - 20, 1, grpMons, n);
+				}
+				else if (RandomDirection <= 3) {
+					Monster = new Enemy(this.x - 25, this.y - 20, Direction, grpMons, n);
+				}
+			}
+			grpMons.add(Monster);
 		}
 	}
 	override public function destroy():Void{
