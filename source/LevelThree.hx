@@ -33,7 +33,7 @@ class LevelThree extends LevelTwo
 		add(_HUD);
 		add(_player);
 		
-		_moneytickmax = 7;
+		_moneytickmax = 10;
 	
 		//super.create();
 	}

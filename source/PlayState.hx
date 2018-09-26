@@ -23,11 +23,11 @@ class PlayState extends FlxState
 	var _HUD:HUD;
 	var _money:Int = 1000;
 	var _moneytick:Int = 0;
-	var _moneytickmax:Int = 10;
+	var _moneytickmax:Int = 15;
 	var _moneyovertime = 1;
 	var _trapmoney:Int = 50;
 	var _seedmoney:Int = 50;
-	var _moneygoal:Int = 2000;
+	var _moneygoal:Int = 1500;
 	var _currlevel:Int = 1;
 	
 	var _trapSound:FlxSound;
@@ -107,7 +107,7 @@ class PlayState extends FlxState
 			_money += 150;
 			E.destroy();
 			M.destroy();
-			_trapSound.play(true, 300);
+			//_trapSound.play(true, 300);
 			
 		}
 		
