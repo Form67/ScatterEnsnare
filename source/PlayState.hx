@@ -8,6 +8,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
+import flixel.system.FlxSound;
 import flixel.text.FlxText;
 
 
@@ -28,6 +29,9 @@ class PlayState extends FlxState
 	var _seedmoney:Int = 50;
 	var _moneygoal:Int = 2000;
 	var _currlevel:Int = 1;
+	
+	var _trapSound:FlxSound;
+	
 	override public function create():Void
 	{
 		
@@ -39,6 +43,8 @@ class PlayState extends FlxState
 		
 		_grpMonster = new FlxTypedGroup<Enemy>();
 		add(_grpMonster);
+		FlxG.sound.playMusic(AssetPaths.FarmingJaunt8Bit__wav, 1, true);
+		_trapSound = FlxG.sound.load(AssetPaths.trapclose__wav);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
 		grpSeeds = new FlxTypedGroup<Seeds>();
@@ -100,7 +106,9 @@ class PlayState extends FlxState
 		if (E.alive && E.exists && M.alive && M.exists){
 			_money += 110;
 			E.destroy();
-			M.destroy();	
+			M.destroy();
+			_trapSound.play(true, 300);
+			
 		}
 		
 	}
