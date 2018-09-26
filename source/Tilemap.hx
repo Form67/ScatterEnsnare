@@ -79,7 +79,7 @@ if (tileSet == null)
 			}
 			
 			
-			if (tileLayer.properties.contains("nocollide"))
+			if (!tileLayer.properties.contains("Farmable"))
 			{
 				backgroundLayer.add(tilemap);
 			}
