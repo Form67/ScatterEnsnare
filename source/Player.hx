@@ -17,6 +17,8 @@
 	 public var seeds:FlxTypedGroup<Seeds>;
 	 public var mons:FlxTypedGroup<Enemy>;
 	 public var fore:FlxGroup;
+	var trapCool:Float;
+	 var seedCool:Float;
      public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset, _grpSnare:FlxTypedGroup<Ensnare>,grpSeeds:FlxTypedGroup<Seeds>,grpMons:FlxTypedGroup<Enemy>,grpTiles:FlxGroup)
      {
          super(X, Y);
@@ -103,14 +105,16 @@
 			animation.play("right");
 			_xspeed += speed;
 		}
-
-		if (FlxG.keys.anyJustPressed([J]))
+		
+		if (FlxG.keys.anyJustPressed([J])&& seedCool<=0)
 		{
+			seedCool = .1;
 			Scatter();
 		}
 		
-		if (FlxG.keys.anyJustPressed([K]))
+		if (FlxG.keys.anyJustPressed([K])&&trapCool <=0)
 		{
+			trapCool = .1;
 			Ensnare();
 		}
 		

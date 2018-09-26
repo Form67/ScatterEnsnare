@@ -28,7 +28,6 @@ class PlayState extends FlxState
 	var _seedmoney:Int = 50;
 	var _moneygoal:Int = 2000;
 	var _currlevel:Int = 1;
-	
 	override public function create():Void
 	{
 		
