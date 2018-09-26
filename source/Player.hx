@@ -165,13 +165,13 @@
 		
 		if (FlxG.keys.anyJustPressed([J])&& seedCool<=0)
 		{
-			seedCool = .1;
+			seedCool = .2;
 			Scatter();
 		}
 		
 		if (FlxG.keys.anyJustPressed([K])&&trapCool <=0)
 		{
-			trapCool = .1;
+			trapCool = .2;
 			Ensnare();
 		}
 		

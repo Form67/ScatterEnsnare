@@ -13,7 +13,7 @@ import flixel.math.FlxRandom;
 class Seeds extends FlxSprite
 {	public var grpSeeds:FlxTypedGroup<Seeds>;
 	public var foreGrnd:FlxGroup;
-	
+	public var RandomMonster:Float;
 	public var grpMons:FlxTypedGroup<Enemy>;
 	var speed:Float = 125;
 	var Direction:Int;
@@ -21,12 +21,22 @@ class Seeds extends FlxSprite
 	var lifeSpan:Float = .6;
 	var level:Int;
 	
+	
 	var _hitSound:FlxSound;
 	
 	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Int = 0,?S:FlxTypedGroup<Seeds>,?M:FlxTypedGroup<Enemy>,?F:FlxGroup)
 	{
 		super(X, Y);
-		makeGraphic(5, 5, FlxColor.BLACK);
+		RandomMonster = Std.int(Math.random() * 3 + 1);
+		if (RandomMonster <= 1) {
+			makeGraphic(5, 5, FlxColor.BLACK);
+		}
+		else if (RandomMonster <= 2) {
+			makeGraphic(5, 5, FlxColor.PINK);
+		}
+		else if (RandomMonster <= 3) {
+			makeGraphic(5, 5, FlxColor.CYAN);
+		}
 		width = 5;
 		height = 5;
 		grpSeeds = S;
@@ -63,11 +73,9 @@ class Seeds extends FlxSprite
 	}
 	function SpawnMonster():Void {
 		var n:Int = 0;
-		var RandomMonster:Float;
 		var Monster:Enemy = null;
 		var RandomDirection:Float;
 		if (this.overlaps(foreGrnd)) {
-			RandomMonster = Std.int(Math.random() * 3 + 1);
 			if (RandomMonster <= 1) {
 				n = 0;
 			}

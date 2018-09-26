@@ -32,8 +32,8 @@ class LevelTwo extends PlayState
 		add(_player);
 		
 		_money = 1000;
-		_seedmoney = 75;
-		_trapmoney = 75;
+		_seedmoney = 50;
+		_trapmoney = 50;
 	
 		//super.create();
 	}
