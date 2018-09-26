@@ -23,7 +23,10 @@
 	 var _footstep1:FlxSound;
 	 var _footstep2:FlxSound;
 	 
-     public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset, _grpSnare:FlxTypedGroup<Ensnare>,grpSeeds:FlxTypedGroup<Seeds>,grpMons:FlxTypedGroup<Enemy>)
+	 public var fore:FlxGroup;
+	var trapCool:Float =0;
+	 var seedCool:Float =0;
+     public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset, _grpSnare:FlxTypedGroup<Ensnare>,grpSeeds:FlxTypedGroup<Seeds>,grpMons:FlxTypedGroup<Enemy>,grpTiles:FlxGroup)
      {
          super(X, Y);
 		 fore = grpTiles;
@@ -185,6 +188,8 @@
 	 {
 		 movement();
 		 super.update(elapsed);
+		 seedCool -= elapsed;
+		 trapCool -= elapsed;
 	 }
 
  }
