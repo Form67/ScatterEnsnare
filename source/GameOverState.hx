@@ -26,7 +26,7 @@ class GameOverState extends FlxState
 			
 			if (num == 1)
 			{
-				return "The dungeon's are as barren as your profits";
+				return "The dungeons are as barren as your profits";
 			}
 			
 			if (num == 2)
@@ -91,12 +91,13 @@ class GameOverState extends FlxState
 	}
 	
 	override public function new(level:Int):Void
-	{		
+	{
+		super();
 		_message = randtext(level);
 		_text = new FlxText(0, 0, 0, _message, 8);
 		_text.screenCenter();
 		add(_text);
-		super();
+		
 		
 	}
 	
