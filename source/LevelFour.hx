@@ -33,7 +33,7 @@ class LevelFour extends LevelThree
 		add(_HUD);
 		add(_player);
 		
-		_moneyovertime = 5;
+		_moneyovertime = 2;
 	
 		//super.create();
 	}
