@@ -59,20 +59,7 @@ class Enemy extends FlxSprite
         }
 
         if (MonsterType == 1) {
-            if (Direction == 0) {
-                velocity.x = -speed;
-            }
-            else if (Direction == 1) {
-                velocity.x = speed;
-            }
-            else if (Direction == 2) {
-                velocity.y = -speed;
-            }
-            else if (Direction == 3) {
-                velocity.y = speed;
-            }
-
-            RandomSeed = Std.int(Math.random() * 50);
+            RandomSeed = Std.int(Math.random() * 20);
             if (RandomSeed < 1) {
                 speed += 25;
                 RandomDirection = Std.int(Math.random() * 2 + 1);
@@ -92,6 +79,18 @@ class Enemy extends FlxSprite
                         Direction = 1;
                     }
                 }
+            }
+            if (Direction == 0) {
+                velocity.x = -speed;
+            }
+            else if (Direction == 1) {
+                velocity.x = speed;
+            }
+            else if (Direction == 2) {
+                velocity.y = -speed;
+            }
+            else if (Direction == 3) {
+                velocity.y = speed;
             }
         }
 
