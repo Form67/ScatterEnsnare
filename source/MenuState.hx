@@ -21,7 +21,10 @@ class MenuState extends FlxState
 		_playButton.screenCenter();
 		add(_playButton);
 		
-		_tutorialscreen = new FlxSprite(0, 0, AssetPaths.TutorialScreen__png);
+		
+		_tutorialscreen = new FlxSprite(0,0, AssetPaths.TutorialScreen__png);
+		_tutorialscreen.setGraphicSize(800,600);
+		_tutorialscreen.screenCenter();
 		super.create();
 		
 	}

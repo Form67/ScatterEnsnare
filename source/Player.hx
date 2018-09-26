@@ -4,7 +4,6 @@
  import flixel.system.FlxAssets.FlxGraphicAsset;
  import flixel.FlxG;
  import flixel.group.FlxGroup.FlxTypedGroup;
- import Reflect;
  
  class Player extends FlxSprite
  {
