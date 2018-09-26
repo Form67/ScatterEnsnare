@@ -57,7 +57,7 @@ class Win extends FlxState
 			screen2 = true;
 		}
 		
-		else if (FlxG.keys.anyJustPressed([J]) && screen2)
+		else if (FlxG.keys.anyJustPressed([J,K,W,S,A,D]) && screen2)
 		{
 			FlxG.switchState(new PlayState());
 		}
