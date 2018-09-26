@@ -16,6 +16,8 @@ class Ensnare extends FlxSprite
 		super(X, Y);
 		loadGraphic("assets/images/Trap1.png", true);
 		updateHitbox();
+		width /= 2;
+		height /= 2;
 	}
 	override public function update(elapsed:Float):Void{
 		super.update(elapsed);
