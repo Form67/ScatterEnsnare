@@ -64,6 +64,8 @@ class Seeds extends FlxSprite
 	}
 	function SpawnMonster():Void {
 		var n:Int;
+		var RandomMonster:Float;
+		var RandomDirection:Float;
 		if (this.overlaps(foreGrnd)) {
 			RandomMonster = Std.int(Math.random() * 3 + 1);
 			if (RandomMonster <= 1) {
