@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 import flixel.graphics.FlxGraphic;
 import flixel.group.FlxGroup;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.system.FlxSound;
 import flixel.util.FlxColor;
 import flixel.math.FlxRandom;
 
@@ -20,6 +21,9 @@ class Seeds extends FlxSprite
 	var monsterDelay:Float = .5;
 	var lifeSpan:Float = .6;
 	var level:Int;
+	
+	var _hitSound:FlxSound;
+	
 	public function new(?X:Float = 0, ?Y:Float = 0, ?D:Int = 0,?S:FlxTypedGroup<Seeds>,?M:FlxTypedGroup<Enemy>,?F:FlxGroup)
 	{
 		super(X, Y);
@@ -31,6 +35,8 @@ class Seeds extends FlxSprite
 		foreGrnd = F;
 		Direction = D;
 		updateHitbox();
+		
+		_hitSound = FlxG.sound.load(AssetPaths.seedhit__wav);
 	}
 	override public function update(elapsed:Float):Void{
 		super.update(elapsed);
@@ -47,6 +53,7 @@ class Seeds extends FlxSprite
 		if (lifeSpan <= 0){
 			velocity.x = 0;
 			velocity.y = 0;
+			_hitSound.play(false, 0);
 			monsterDelay -= elapsed;
 		}
 		if (monsterDelay <= 0){
@@ -55,18 +62,43 @@ class Seeds extends FlxSprite
 			destroy();
 		}
 	}
-	function SpawnMonster():Void{
-		if (this.overlaps(foreGrnd)){
-			if(Direction==0)
-				mon = new Enemy(this.x - 25, this.y - 20, Direction, grpMons, 0);
-			else if(Direction == 1){
-				mon = new Enemy(this.x - 25, this.y - 20, Direction, grpMons, 1);
-				
+	function SpawnMonster():Void {
+		var n:Int;
+		if (this.overlaps(foreGrnd)) {
+			RandomMonster = Std.int(Math.random() * 3 + 1);
+			if (RandomMonster <= 1) {
+				n = 0;
 			}
-			else if (Direction == 2){
-				mon = new Enemy(this.x - 25, this.y - 20, Direction, grpMons, 2);
+			else if (RandomMonster <= 2) {
+				n = 1;
 			}
-			grpMons.add(mon);
+			else if (RandomMonster <= 3) {
+				n = 2;
+			}
+			RandomDirection = Std.int(Math.random() * 3 + 1);
+			if (Direction == 0 || Direction == 1) {
+				if (RandomDirection <= 1) {
+					Monster = new Enemy(this.x - 25, this.y - 20, Direction, grpMons, n);
+				}
+				else if (RandomDirection <= 2) {
+					Monster = new Enemy(this.x - 25, this.y - 20, 2, grpMons, n);
+				}
+				else if (RandomDirection <= 3) {
+					Monster = new Enemy(this.x - 25, this.y - 20, 3, grpMons, n);
+				}
+			}
+			else if (Direction == 2 || Direction == 3) {
+				if (RandomDirection <= 1) {
+					Monster = new Enemy(this.x - 25, this.y - 20, 0, grpMons, n);
+				}
+				else if (RandomDirection <= 2) {
+					Monster = new Enemy(this.x - 25, this.y - 20, 1, grpMons, n);
+				}
+				else if (RandomDirection <= 3) {
+					Monster = new Enemy(this.x - 25, this.y - 20, Direction, grpMons, n);
+				}
+			}
+			grpMons.add(Monster);
 		}
 	}
 	override public function destroy():Void{
