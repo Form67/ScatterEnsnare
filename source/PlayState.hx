@@ -32,10 +32,10 @@ class PlayState extends FlxState
 	
 	override public function create():Void
 	{
+		
 		FlxG.mouse.visible = false;
 		level = new Tilemap("assets/tiled/GD1-project-tilemap1.tmx", this);
 		add(level.backgroundLayer);
-		
 		add (level.foregroundTiles);
 		_grpMonster = new FlxTypedGroup<Enemy>();
 		add(_grpMonster);
@@ -44,7 +44,7 @@ class PlayState extends FlxState
 		add(_grpSnare);
 		grpSeeds = new FlxTypedGroup<Seeds>();
 		add(grpSeeds);
-		_player = new Player(20, 20,_grpSnare,grpSeeds,_grpMonster);
+		_player = new Player(20, 20,_grpSnare,grpSeeds,_grpMonster,level.foregroundTiles);
 		_HUD = new HUD();
 		add(_HUD);
 		add(_player);
@@ -127,7 +127,7 @@ class PlayState extends FlxState
 	
 	function monsterTouchTrap(E:Ensnare,M:Enemy):Void{
 		if (E.alive && E.exists && M.alive && M.exists){
-			_money += 150;
+			_money += 110;
 			E.destroy();
 			M.destroy();	
 		}

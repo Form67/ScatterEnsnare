@@ -31,7 +31,7 @@ class Enemy extends FlxSprite
         }
        else if (M == 2 ) {
             loadGraphic("assets/images/monster_3_fin.png", true);
-            speed = 75;
+            speed = 50;
         }
 		updateHitbox();
          
