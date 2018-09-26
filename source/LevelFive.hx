@@ -66,7 +66,7 @@ class LevelFive extends LevelFour
 		
 		if (_money >= _moneygoal)
 		{
-			//FlxG.switchState(new LevelThree());
+			FlxG.switchState(new Win());
 		}
 		
 		FlxG.overlap(_grpSnare, _grpMonster, monsterTouchTrap);
