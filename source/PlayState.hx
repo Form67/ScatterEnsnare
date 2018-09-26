@@ -24,7 +24,7 @@ class PlayState extends FlxState
 	var _money:Int = 1000;
 	var _moneytick:Int = 0;
 	var _moneytickmax:Int = 10;
-	var _moneyovertime = 5;
+	var _moneyovertime = 1;
 	var _trapmoney:Int = 50;
 	var _seedmoney:Int = 50;
 	var _moneygoal:Int = 2000;
@@ -104,7 +104,7 @@ class PlayState extends FlxState
 	
 	function monsterTouchTrap(E:Ensnare,M:Enemy):Void{
 		if (E.alive && E.exists && M.alive && M.exists){
-			_money += 110;
+			_money += 150;
 			E.destroy();
 			M.destroy();
 			_trapSound.play(true, 300);
