@@ -28,7 +28,7 @@ class LevelFour extends LevelThree
 		
 		
 		
-		_player = new Player(20, 20,_grpSnare,grpSeeds,_grpMonster);
+		_player = new Player(20, 20,_grpSnare,grpSeeds,_grpMonster,level.foregroundTiles);
 		_HUD = new HUD();
 		add(_HUD);
 		add(_player);
