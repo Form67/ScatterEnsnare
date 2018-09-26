@@ -9,7 +9,9 @@ class MenuState extends FlxState
 {
 	var _playButton : FlxButton;
 	var _tutorialscreen : FlxSprite;
+	var _storyscreen : FlxSprite;
 	var tutorial : Bool = false;
+	var story : Bool = false;
 	
 	override public function create():Void
 	{
@@ -21,6 +23,10 @@ class MenuState extends FlxState
 		_playButton.screenCenter();
 		add(_playButton);
 		
+		_storyscreen = new FlxSprite(0,0, AssetPaths.TutorialScreen__png);
+		_storyscreen.setGraphicSize(800,600);
+		_storyscreen.screenCenter();
+		
 		
 		_tutorialscreen = new FlxSprite(0,0, AssetPaths.TutorialScreen__png);
 		_tutorialscreen.setGraphicSize(800,600);
@@ -31,6 +37,15 @@ class MenuState extends FlxState
 
 	override public function update(elapsed:Float):Void
 	{
+		if (story)
+		{
+			if (FlxG.keys.anyPressed([W,S,A,D,J,K]))
+			{
+				add(_tutorialscreen);
+				tutorial = true;
+				story = false;
+			}
+		}
 		if (tutorial)
 		{
 			if (FlxG.keys.anyPressed([W,S,A,D,J,K]))
@@ -43,7 +58,7 @@ class MenuState extends FlxState
 	
 	function clickPlay():Void
 	{
-		add(_tutorialscreen);
-		tutorial = true;
+		add(_storyscreen);
+		story = true;
 	}
 }
