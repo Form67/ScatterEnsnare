@@ -17,7 +17,7 @@ class LevelThree extends LevelTwo
 		add(level.backgroundLayer);
 		add (level.foregroundTiles);
 		
-		
+		_trapSound = FlxG.sound.load(AssetPaths.trapclose__wav);
 		_grpMonster = new FlxTypedGroup<Enemy>();
 		add(_grpMonster);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
@@ -33,7 +33,7 @@ class LevelThree extends LevelTwo
 		add(_HUD);
 		add(_player);
 		
-		_moneytickmax = 5;
+		_moneytickmax = 10;
 	
 		//super.create();
 	}
@@ -54,7 +54,7 @@ class LevelThree extends LevelTwo
 		
 		if (_money < 1)
 		{
-			FlxG.switchState(new GameOverState());
+			FlxG.switchState(new GameOverState(3));
 		}
 		
 		if (FlxG.keys.anyPressed([P]))

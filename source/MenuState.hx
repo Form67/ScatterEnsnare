@@ -10,6 +10,7 @@ class MenuState extends FlxState
 	var _playButton : FlxButton;
 	var _tutorialscreen : FlxSprite;
 	var _storyscreen : FlxSprite;
+	var _menuscreen : FlxSprite;
 	var tutorial : Bool = false;
 	var story : Bool = false;
 	
@@ -19,11 +20,18 @@ class MenuState extends FlxState
 		{
 			FlxG.sound.playMusic(AssetPaths.FarmingJauntOrchestra__wav, 1, true);
 		}
+		
+		_menuscreen = new FlxSprite(0, 0, AssetPaths.Menu_Screen__png);
+		_menuscreen.setGraphicSize(800,600);
+		_menuscreen.screenCenter;
+		add(_menuscreen);
+		
 		_playButton = new FlxButton(20, 20, "PLAY NOW", clickPlay);
 		_playButton.screenCenter();
+		_playButton.setPosition(_playButton.getPosition().x, 350);
 		add(_playButton);
 		
-		_storyscreen = new FlxSprite(0,0, AssetPaths.TutorialScreen__png);
+		_storyscreen = new FlxSprite(0,0, AssetPaths.StoryBlurb__png);
 		_storyscreen.setGraphicSize(800,600);
 		_storyscreen.screenCenter();
 		
@@ -39,16 +47,16 @@ class MenuState extends FlxState
 	{
 		if (story)
 		{
-			if (FlxG.keys.anyPressed([W,S,A,D,J,K]))
+			if (FlxG.keys.anyJustPressed([W,S,A,D,J,K]))
 			{
 				add(_tutorialscreen);
 				tutorial = true;
 				story = false;
 			}
 		}
-		if (tutorial)
+		else if (tutorial)
 		{
-			if (FlxG.keys.anyPressed([W,S,A,D,J,K]))
+			if (FlxG.keys.anyJustPressed([W,S,A,D,J,K]))
 			{
 				FlxG.switchState(new PlayState());
 			}

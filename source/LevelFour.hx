@@ -24,7 +24,7 @@ class LevelFour extends LevelThree
 		add(_grpSnare);
 		grpSeeds = new FlxTypedGroup<Seeds>();
 		add(grpSeeds);
-		
+		_trapSound = FlxG.sound.load(AssetPaths.trapclose__wav);
 		
 		
 		
@@ -33,7 +33,7 @@ class LevelFour extends LevelThree
 		add(_HUD);
 		add(_player);
 		
-		_moneyovertime = 10;
+		_moneyovertime = 5;
 	
 		//super.create();
 	}
@@ -54,7 +54,7 @@ class LevelFour extends LevelThree
 		
 		if (_money < 1)
 		{
-			FlxG.switchState(new GameOverState());
+			FlxG.switchState(new GameOverState(4));
 		}
 		
 		if (FlxG.keys.anyPressed([P]))

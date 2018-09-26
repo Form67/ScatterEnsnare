@@ -16,7 +16,7 @@ class LevelFive extends LevelFour
 		level = new Tilemap("assets/tiled/GD1-project-tilemap5.tmx", this);
 		add(level.backgroundLayer);
 		add (level.foregroundTiles);
-		
+		_trapSound = FlxG.sound.load(AssetPaths.trapclose__wav);
 		
 		_grpMonster = new FlxTypedGroup<Enemy>();
 		add(_grpMonster);
@@ -34,8 +34,8 @@ class LevelFive extends LevelFour
 		add(_player);
 		
 		_money = 1000;
-		_seedmoney = 75;
-		_trapmoney = 75;
+		_seedmoney = 50;
+		_trapmoney = 50;
 	
 		//super.create();
 	}
@@ -56,7 +56,7 @@ class LevelFive extends LevelFour
 		
 		if (_money < 1)
 		{
-			FlxG.switchState(new GameOverState());
+			FlxG.switchState(new GameOverState(5));
 		}
 		
 		if (FlxG.keys.anyPressed([P]))

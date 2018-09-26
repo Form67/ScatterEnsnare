@@ -23,11 +23,11 @@ class PlayState extends FlxState
 	var _HUD:HUD;
 	var _money:Int = 1000;
 	var _moneytick:Int = 0;
-	var _moneytickmax:Int = 10;
-	var _moneyovertime = 5;
+	var _moneytickmax:Int = 15;
+	var _moneyovertime = 1;
 	var _trapmoney:Int = 50;
 	var _seedmoney:Int = 50;
-	var _moneygoal:Int = 2000;
+	var _moneygoal:Int = 1500;
 	var _currlevel:Int = 1;
 	
 	var _trapSound:FlxSound;
@@ -39,12 +39,11 @@ class PlayState extends FlxState
 		level = new Tilemap("assets/tiled/GD1-project-tilemap1.tmx", this);
 		add(level.backgroundLayer);
 		add (level.foregroundTiles);
-		
+		_trapSound = FlxG.sound.load(AssetPaths.trapclose__wav);
 		
 		_grpMonster = new FlxTypedGroup<Enemy>();
 		add(_grpMonster);
 		FlxG.sound.playMusic(AssetPaths.FarmingJaunt8Bit__wav, 1, true);
-		_trapSound = FlxG.sound.load(AssetPaths.trapclose__wav);
 		_grpSnare = new FlxTypedGroup<Ensnare>();
 		add(_grpSnare);
 		grpSeeds = new FlxTypedGroup<Seeds>();
@@ -74,7 +73,7 @@ class PlayState extends FlxState
 		
 		if (_money < 1)
 		{
-			FlxG.switchState(new GameOverState());
+			FlxG.switchState(new GameOverState(1));
 		}
 		
 		if (FlxG.keys.anyPressed([P]))
@@ -104,7 +103,7 @@ class PlayState extends FlxState
 	
 	function monsterTouchTrap(E:Ensnare,M:Enemy):Void{
 		if (E.alive && E.exists && M.alive && M.exists){
-			_money += 110;
+			_money += 150;
 			E.destroy();
 			M.destroy();
 			_trapSound.play(true, 300);
