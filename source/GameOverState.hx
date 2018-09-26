@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.FlxG;
@@ -9,6 +10,7 @@ class GameOverState extends FlxState
 {
 	var _text : FlxText;
 	var _message : String;
+	var _art : FlxSprite;
 	
 	
 	function randtext(level:Int):String
@@ -93,9 +95,18 @@ class GameOverState extends FlxState
 	override public function new(level:Int):Void
 	{
 		super();
+		
+		
+		_art = new FlxSprite(0, 0, AssetPaths.Game_Over_Screen__png);
+		_art.setGraphicSize(800,600);
+		_art.screenCenter;
+		add(_art);
+		
+		
 		_message = randtext(level);
-		_text = new FlxText(0, 0, 0, _message, 8);
+		_text = new FlxText(0, 0, 0, _message, 10);
 		_text.screenCenter();
+		_text.setPosition(_text.getPosition().x, 250);
 		add(_text);
 		
 		
