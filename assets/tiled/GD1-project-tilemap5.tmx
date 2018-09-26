@@ -32,6 +32,7 @@
  </layer>
  <layer id="2" name="Farmable" width="25" height="19">
   <properties>
+   <property name="Farmable" type="bool" value="true"/>
    <property name="tileset" value="GD1-proj1-tileset"/>
   </properties>
   <data encoding="csv">
