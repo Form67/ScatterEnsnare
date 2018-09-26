@@ -8,9 +8,10 @@ import flixel.util.FlxColor;
 class Win extends FlxState
 {
 	
-	var screen1 : Bool = false;
+	var screen1 : Bool = true;
 	var screen2 : Bool = false;
 	var art : FlxSprite;
+	var art2: FlxSprite;
 	var txt : FlxText;
 	var txt2 : FlxText;
 	var txt3 : FlxText;
@@ -32,10 +33,14 @@ class Win extends FlxState
 		txt2.color = FlxColor.BLACK;
 		
 		
-		txt3 = new FlxText(0, 0, 0, "Press [J] to return to the menu", 10);
+		txt3 = new FlxText(0, 0, 0, "Press [J] to restart", 10);
 		txt3.screenCenter();
-		txt3.setPosition(txt2.getPosition().x, 500);
+		txt3.setPosition(txt3.getPosition().x, 500);
 		txt3.color = FlxColor.BLACK;
+		
+		art2 = new FlxSprite(0, 0, AssetPaths.RestartBlurb__png);
+		art2.setGraphicSize(800,600);
+		art2.screenCenter();
 		
 		add(art);
 		add(txt);
@@ -45,9 +50,16 @@ class Win extends FlxState
 	
 	override public function update(elapsed:Float):Void
 	{
-		if (FlxG.keys.anyJustPressed([J]))
+		if (FlxG.keys.anyJustPressed([J]) && screen1)
 		{
-			FlxG.switchState(new MenuState());
+			add(art2);
+			screen1 = false;
+			screen2 = true;
+		}
+		
+		else if (FlxG.keys.anyJustPressed([J]) && screen2)
+		{
+			FlxG.switchState(new PlayState());
 		}
 	}
 }
