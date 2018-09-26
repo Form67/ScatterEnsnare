@@ -16,7 +16,6 @@ class Seeds extends FlxSprite
 	
 	public var grpMons:FlxTypedGroup<Enemy>;
 	var speed:Float = 125;
-	var mon:Enemy;
 	var Direction:Int;
 	var monsterDelay:Float = .5;
 	var lifeSpan:Float = .6;
@@ -63,8 +62,9 @@ class Seeds extends FlxSprite
 		}
 	}
 	function SpawnMonster():Void {
-		var n:Int;
+		var n:Int =0;
 		var RandomMonster:Float;
+		var Monster:Enemy = null;
 		var RandomDirection:Float;
 		if (this.overlaps(foreGrnd)) {
 			RandomMonster = Std.int(Math.random() * 3 + 1);
