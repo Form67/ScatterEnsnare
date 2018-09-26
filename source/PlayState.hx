@@ -85,7 +85,7 @@ class PlayState extends FlxState
 	
 	function monsterTouchTrap(E:Ensnare,M:Enemy):Void{
 		if (E.alive && E.exists && M.alive && M.exists){
-			//addscore
+			_money += 150;
 			E.destroy();
 			M.destroy();
 			
