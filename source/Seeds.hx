@@ -62,7 +62,7 @@ class Seeds extends FlxSprite
 		}
 	}
 	function SpawnMonster():Void {
-		var n:Int =0;
+		var n:Int = 0;
 		var RandomMonster:Float;
 		var Monster:Enemy = null;
 		var RandomDirection:Float;
