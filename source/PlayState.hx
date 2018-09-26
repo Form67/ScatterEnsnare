@@ -21,7 +21,7 @@ class PlayState extends FlxState
 	public var _grpMonster:FlxTypedGroup<Enemy>;
 	
 	var _HUD:HUD;
-	var _money:Int = 50000;
+	var _money:Int = 1000;
 	var _moneytick:Int = 0;
 	var _moneytickmax:Int = 10;
 	var _moneyovertime = 5;
@@ -87,8 +87,7 @@ class PlayState extends FlxState
 		if (E.alive && E.exists && M.alive && M.exists){
 			_money += 150;
 			E.destroy();
-			M.destroy();
-			
+			M.destroy();	
 		}
 		
 	}
